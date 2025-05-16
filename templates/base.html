@@ -1,0 +1,100 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ESATIC Concours{% endblock %}</title>
+    {% tailwind_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        :root {
+            --primary-color: #0062cc;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff9800;
+            --success-color: #28a745;
+        }
+        
+        .header-banner {
+            background: linear-gradient(135deg, var(--primary-color), #003d80);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .footer-section {
+            background-color: #222;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .btn-custom {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="header-banner">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="{% static 'img/logo.png' %}" alt="Logo ESATIC" class="h-16 mr-4">
+                    <h1 class="text-3xl font-bold">ESATIC Concours</h1>
+                </div>
+                <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="/" class="text-white hover:text-accent-color transition-colors">Accueil</a></li>
+                        <li><a href="#" class="text-white hover:text-accent-color transition-colors">À propos</a></li>
+                        <li><a href="#" class="text-white hover:text-accent-color transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow bg-gray-50">
+        <div class="container mx-auto px-4 py-8">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">ESATIC</h3>
+                    <p>École Supérieure Africaine des Technologies de l'Information et de la Communication</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Liens utiles</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-color transition-colors">Mentions légales</a></li>
+                        <li><a href="#" class="hover:text-accent-color transition-colors">Politique de confidentialité</a></li>
+                        <li><a href="#" class="hover:text-accent-color transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                    <p>Adresse: Abidjan, Côte d'Ivoire</p>
+                    <p>Email: contact@esatic.ci</p>
+                    <p>Téléphone: +225 XX XX XX XX</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-gray-700 text-center">
+                <p>&copy; {% now "Y" %} ESATIC. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
